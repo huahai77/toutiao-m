@@ -1,16 +1,12 @@
 <template>
-  <div id="app">
-    <!-- 路由出口 -->
-    <router-view/>
-
-
+  <div class="qa">
+    问答
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App'
+  name: 'qa'
 }
 </script>
 

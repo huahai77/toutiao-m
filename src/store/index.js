@@ -6,7 +6,8 @@ import {getItem, setItem} from '@/utils/storage'  //导入本地存储封装模�
 Vue.use(Vuex)
 
 
-const USER_KEY = 'toutiao-user'   //声明常量，用于下面使用时导致不必要的变量名字错误
+const USER_KEY = 'toutiao-user'   //!声明常量，用于下面使用时导致不必要的变量名字错误
+
 export default new Vuex.Store({
   state: {
     // 当前登录用户的登录状态(token等数据),在接收服务器数据时一般是字符串。我们可以使用 JSON.parse() 方法将数据转换为 JavaScript 对象

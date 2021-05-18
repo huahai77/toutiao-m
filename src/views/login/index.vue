@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login-container">
     <!-- ***导航栏*** -->
     <!--  $router.back() 返回上一级路由  -->
     <van-nav-bar
@@ -88,8 +88,8 @@ export default {
   data() {
     return {
       user: {
-        mobile: '', //手机号
-        code: ''  //验证码
+        mobile: '13622740807', //手机号
+        code: '246810'  //验证码
       },
       // 表单的正则验证对象
       formRules: {
@@ -127,6 +127,8 @@ export default {
         this.$toast.success("登录成功~!")
         // 5.登录成功后，将后台返回的登录状态(token等数据)，保存到vuex中
         this.$store.commit('setUser', res.data.data)
+        // 6. 登陆成功后，跳转回原来页面
+        this.$router.back()
       } catch (err) {
         console.log(err)
         this.$toast.fail("登录失败~!手机号或验证码错误")
@@ -181,10 +183,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
+.login-container {
   // 验证码按钮
   .send-btn {
-    width: 78px;
     height: 23px;
     background-color: #ededed;
     .van-button__text {

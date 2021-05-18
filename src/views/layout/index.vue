@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout-container">
     <!-- 子路由出口 -->
     <router-view/>
     <!-- /子路由出口 -->

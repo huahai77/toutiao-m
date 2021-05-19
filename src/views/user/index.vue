@@ -46,7 +46,7 @@
       </van-grid>
     </van-cell-group>
 
-    <!-- **未登录组件 -->
+    <!-- **未登录子组件 -->
     <not-login v-else/>
           
     <!-- **收藏与历史块 -->
@@ -78,7 +78,7 @@
 
 <script>
 // ^子组件
-import notLogin from './notLogin' 
+import NotLogin from './NotLogin' 
 
 import { mapState } from 'vuex'
 
@@ -89,7 +89,7 @@ export default {
   name: 'user',
 
   components: {
-    notLogin,
+    NotLogin,
   },
 
   data() {

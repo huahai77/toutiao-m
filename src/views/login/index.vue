@@ -123,7 +123,7 @@ export default {
       try {
         const res = await login(this.user)
         // 4.处理响应结果
-        console.log(res)
+        // console.log(res)
         this.$toast.success("登录成功~!")
         // 5.登录成功后，将后台返回的登录状态(token等数据)，保存到vuex中
         this.$store.commit('setUser', res.data.data)

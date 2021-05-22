@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       user: {
-        mobile: '13622740807', //手机号
+        mobile: '13611111111', //手机号
         code: '246810'  //验证码
       },
       // 表单的正则验证对象

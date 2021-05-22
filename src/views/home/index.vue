@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <!-- //!导航栏 -->
+    <!-- //!搜索 -->
     <van-nav-bar class="app-nav-bar">
       <van-button 
         class="search-btn" 
@@ -8,7 +8,9 @@
         slot="title" 
         icon="search" 
         size="small" 
-        round>搜索
+        round
+        to="/search"
+      >搜索
       </van-button>
     </van-nav-bar>
 

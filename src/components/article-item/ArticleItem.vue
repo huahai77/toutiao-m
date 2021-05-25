@@ -7,7 +7,13 @@
 2. 中间三张图片，把标签放在中间的label里，放在作者描述上方，遍历三张图片动态绑定src
 使用v-if判断cover的type等于1或者3，决定显示哪个方案
 -->
-<van-cell class="article-item">
+<van-cell 
+  class="article-item" 
+  :to="{
+    name: 'article', 
+    params: {articleId: article.art_id}
+    }"
+>
   <!-- //& 左边: 标题 -->
   <div slot="title" class="title van-multi-ellipsis--l3">{{article.title}}</div>
   <!-- //& 中间: 标题下方内容 -->

@@ -55,3 +55,54 @@ export const getChannels = () => {
     url: '/app/v1_0/user/channels'
   })
 }
+
+
+/**
+ * 关注用户
+ */
+export const addFollow = targetId => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/user/followings',
+    data: {
+      target: targetId     //被关注的用户ID
+    }
+  })
+}
+
+
+/**
+ * 取消关注用户
+ */
+export const cancelFollow = targetId => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/user/followings/${targetId}`
+  })
+}
+
+
+/**
+ * 获取自己当前用户个人资料
+ */
+export const getUserProfile = target => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/user/profile',
+    params: {
+      target    //当前自己登录用户ID
+    }
+  })
+}
+
+
+/**
+ * 编辑用户个人资料
+ */
+export const updateUserProfile = data => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/profile',
+    data
+  })
+}

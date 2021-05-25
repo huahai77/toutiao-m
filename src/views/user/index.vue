@@ -15,7 +15,12 @@
         <!-- 昵称 -->
         <div slot="title" class="name">{{currentUser.name}}</div>
         <!-- 编辑资料按钮 -->
-        <van-button class="edit-info" round size="small">编辑资料</van-button>
+        <van-button 
+          class="edit-info" 
+          round size="small" 
+          to="/user/profile"
+          >编辑资料
+        </van-button>
       </van-cell>
       <!-- *用户数据信息 -->
       <van-grid :border="false" class="data-info">

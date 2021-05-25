@@ -11,8 +11,9 @@ const routes = [
     name: 'login',
     component: () => import('@/views/login/')
   },
+
+  // 底部导航栏
   {
-    // 底部导航栏
     path: '/',
     component: () => import('@/views/layout/'),
     children: [
@@ -38,11 +39,28 @@ const routes = [
       }
     ]
   },
+
   // 搜索
   {
     path: '/search',
     name: 'search',
     component: () => import('@/views/search/')
+  },
+
+  // 文章详情,动态路由，需要跳转的文章id
+  {
+    path: '/article:articleId',
+    name: 'article',
+    component: () => import('@/views/article/'),
+    // 将动态路由参数映射到组件的props中，访问和维护都方便
+    props: true
+  },
+
+  // 编辑我的资料
+  {
+    path: '/user/profile',
+    name: 'profile',
+    component: () => import('@/views/my-profile')
   }
 ]
 

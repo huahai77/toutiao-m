@@ -28,7 +28,7 @@
       maxlength="7"
     />
   </div>
-  
+
 </div>
 </template>
 
@@ -40,11 +40,15 @@ export default {
   name: 'UpdateName',
   // 组件参数 接收来自父组件的数据
   props: {
-    // 原来的名字
-    name: {
+    // 原来的名字(父组件)
+    // name: {
+    //   type: String,
+    //   required: true
+    // }  ||
+    value: {
       type: String,
       required: true
-    }
+    },
   },
 
   // 局部注册的组件
@@ -54,7 +58,8 @@ export default {
   data () {
     return {
       //*要修改的名称内容,因为父组件传过来的props数据不能直接修改，所有拷贝一份作为修改
-      content: this.name,    
+      // content: this.name,   || 
+      content: this.value,    
     }
   },
 
@@ -71,7 +76,10 @@ export default {
   methods: {
     // &左侧取消按钮事件
     onClickLeft() {
+      // 关闭弹出层
       this.$emit('close-popup')
+      // 第二种方法:点击取消后，说明不想修改，重新将没修改的值赋给文本
+      this.content = this.value
     },
 
     // &点击完成修改事件
@@ -83,14 +91,18 @@ export default {
 
       try {
         // 1.请求提交更新昵称
-        await updateUserProfile(this.content)
+        await updateUserProfile({
+          name: this.content
+        })
         // 2.更新成功后 => 修改父组件中的name => 关闭弹出层
         // 将更新后的数据发送给父组件
-        this.$emit('update-name', this.content)
+        // this.$emit('update-name', this.content)  ||
+        this.$emit('input', this.content)
         this.$emit('close-popup')
         this.$toast.success("修改完成")
         
       } catch (error) {
+        // 如果昵称重复，则捕获异常
         if(error && error.response && error.response.status === 409) {
           this.$toast.fail("昵称已存在")
         }

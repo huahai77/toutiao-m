@@ -85,13 +85,13 @@ export const cancelFollow = targetId => {
 /**
  * 获取自己当前用户个人资料
  */
-export const getUserProfile = target => {
+export const getUserProfile = () => {
   return request({
     method: 'GET',
     url: '/app/v1_0/user/profile',
-    params: {
-      target    //当前自己登录用户ID
-    }
+    // params: {
+    //   target    //当前自己登录用户ID
+    // }
   })
 }
 

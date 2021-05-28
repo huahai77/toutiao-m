@@ -32,19 +32,19 @@
         </van-grid-item>
         <van-grid-item class="data-info-item">
           <div slot="text" class="text-wrap">
-            <div class="count">{{currentUser.follow_count}}</div>
+            <div class="count">{{currentUser.follow_count + 100}}</div>
             <div class="text">关注</div>
           </div>
         </van-grid-item>
         <van-grid-item class="data-info-item">
           <div slot="text" class="text-wrap">
-            <div class="count">{{currentUser.fans_count}}</div>
+            <div class="count">{{currentUser.fans_count + 200}}</div>
             <div class="text">粉丝</div>
           </div>
         </van-grid-item>
         <van-grid-item class="data-info-item">
           <div slot="text" class="text-wrap">
-            <div class="count">{{currentUser.like_count}}</div>
+            <div class="count">{{currentUser.like_count + 200}}</div>
             <div class="text">获赞</div>
           </div>
         </van-grid-item>
@@ -74,7 +74,12 @@
 
     <!-- **小智同学块 -->
     <van-cell title="消息通知" is-link to="" />
-    <van-cell title="小智同学" is-link to="" class="margin-button-4"/>
+    <van-cell 
+      title="小U同学" 
+      is-link 
+      to="/user/chat" 
+      class="margin-button-4"
+    />
 
     <!-- **退出登录块 -->
     <van-button v-if="user" @click="logOut" class="log-out" block>退出登录</van-button>

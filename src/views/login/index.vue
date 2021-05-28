@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       user: {
-        mobile: '13611111111', //手机号
+        mobile: '17090086870', //手机号
         code: '246810'  //验证码
       },
       // 表单的正则验证对象
@@ -127,8 +127,14 @@ export default {
         this.$toast.success("登录成功~!")
         // 5.登录成功后，将后台返回的登录状态(token等数据)，保存到vuex中
         this.$store.commit('setUser', res.data.data)
+
+        // 跳转页面之前，将原来的缓存清除,让它重新渲染
+        this.$store.commit('removeCachePage', 'cachePages')
+
         // 6. 登陆成功后，跳转回原来页面
-        this.$router.back()
+        // this.$router.back()
+        // 如果有记录之前的路径，就回到之前，否则就跳转到首页
+        this.$router.push(this.$route.query.redirect || '/')
       } catch (err) {
         console.log(err)
         this.$toast.fail("登录失败~!手机号或验证码错误")

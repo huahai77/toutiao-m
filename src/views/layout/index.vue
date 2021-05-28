@@ -1,7 +1,9 @@
 <template>
   <div class="layout-container">
-    <!-- 子路由出口 -->
-    <router-view/>
+    <!-- 二级子路由出口 -->
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
     <!-- /子路由出口 -->
 
     <!-- 底部导航栏 -->
@@ -22,6 +24,9 @@ export default {
     return {
       active: 0
     }
+  },
+  mounted () {
+    this.$store.commit('addCachePage', 'layout')
   }
 }
 </script>

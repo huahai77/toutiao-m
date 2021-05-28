@@ -160,8 +160,8 @@ export default {
   data () {
     return {
       profile: {},    //当前用户资料
-      currentUser: {},      //当前用户信息
-      currentUserId: '',    //当前用户ID
+      // currentUser: {},      //当前用户信息
+      // currentUserId: '',    //当前用户ID
       isEditNameShow: false, //修改名字的弹出层显示与隐藏
       isEditGenderShow: false,    //修改性别弹出显示与隐藏
       isEditBirthdayShow: false, //修改生日弹出层显示与隐藏
@@ -172,7 +172,7 @@ export default {
 
   // 生命周期函数
   created () {
-    this.loadCurrentUser()
+    // this.loadCurrentUser()
     this.loadUserProfile()
   },
   mounted () {
@@ -184,18 +184,19 @@ export default {
   // 组件方法
   methods: {
     // !加载当前用户信息
-    async loadCurrentUser() {
-      const {data} = await getCurrentUser()
-      // console.log(data)
-      this.currentUser = data.data
-      // 将用户ID保存到data
-      this.currentUserId = data.data.id.toString() 
-      // console.log(data.data.id)
-    },
+    // async loadCurrentUser() {
+    //   const {data} = await getCurrentUser()
+    //   // console.log(data)
+    //   this.currentUser = data.data
+    //   // 将用户ID保存到data
+    //   this.currentUserId = data.data.id.toString() 
+    //   // console.log(data.data.id)
+    // },
 
     // &加载当前用户个人资料
     async loadUserProfile() {
-      const {data} = await getUserProfile(this.currentUserId)
+      // const {data} = await getUserProfile(this.currentUserId)
+      const {data} = await getUserProfile()
       // console.log(data)
       this.profile = data.data
     },

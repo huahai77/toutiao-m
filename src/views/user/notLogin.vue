@@ -1,6 +1,11 @@
 <template>
   <div class="not-login-container">
-    <div class="avatar" @click="$router.push('/login')">
+    <div class="avatar" @click="$router.push({
+      name: 'login',
+      query: {
+        redirect: '/user'
+      }
+    })">
       <img src="./image/not-login-avatar.png" alt=""> 
     </div>
     <div class="login">登录 / 注册</div>

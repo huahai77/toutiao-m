@@ -1,6 +1,6 @@
 <template>
 <!-- !文章列表组件 -->
-  <div class="article-list">
+  <div class="article-list" ref="articleList">
     <!-- //&下拉刷新 -->
     <van-pull-refresh 
       v-model="isRefreshLoading" 
@@ -32,6 +32,8 @@ import {getArticles} from '@/api/article'   //& api方法
 
 import ArticleItem from '@/components/article-item/ArticleItem'   //& 子组件
 
+import {debounce} from 'lodash'   //&防抖
+
 export default {
   name: "ArticleList",
   // 组件参数 接收来自父组件的数据
@@ -57,12 +59,25 @@ export default {
       timestamp: null,  //& 获取下一页数据的时间戳
       isRefreshLoading: false,  //& 控制下拉刷新loading状态
       refreshSuccessText: '',   //& 刷新成功提示文本
+      scrollTop: 0
     }
   },
 
   // 生命周期函数
   created() {},
-  mounted() {},
+  mounted() {
+    // 获取滚动距离顶部的位置
+    const articleList = this.$refs['articleList']
+    articleList.onscroll = debounce(() => {
+      // console.log('onscroll')
+      this.scrollTop = articleList.scrollTop
+    }, 50)
+  },
+  // 被 keep-alive 缓存的组件激活时调用
+  activated() {
+    // 将记录的到顶部的距离设置回去
+    this.$refs['articleList'].scrollTop = this.scrollTop
+  },
 
   // 计算属性
   computed: {},
